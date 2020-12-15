@@ -1,0 +1,12 @@
+digit buttons:
+  1: display is blank and digit is 0: REJECTED
+  2: display is blank and digit is not 0: set num1
+  3: display is not blank: concat onto num1
+
+  4 - 6: same as above except num1 and operator are already set; in this case the same things happen but to num2 instead of num1
+
+operator buttons:
+  1: no num1: REJECTED
+  2: there is a num1 but no num2: set operator
+  3: num1 && num2: REJECTED
+  
