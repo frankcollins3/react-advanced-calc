@@ -26,6 +26,8 @@ const Calculator = props => {
     const digitEntered = (digit) => {
        if (digit === '0' && tempNum === '') {
            // no-op
+       } else if (digit === '.' && tempNum.includes('.')) {
+           // no-op
        } else if (digit !== '0' && tempNum === '') {
            setTempNum(digit)
        } else if (tempNum !== '') {
@@ -56,8 +58,8 @@ const Calculator = props => {
     useEffect(() => {
         if (!shouldCalculate) { return }
 
-        const parsedNum1 = parseInt(num1)
-        const parsedNum2 = parseInt(num2)
+        const parsedNum1 = parseFloat(num1)
+        const parsedNum2 = parseFloat(num2)
     
         if (operator === '+') {
             setResult(parsedNum1 + parsedNum2)
@@ -112,7 +114,7 @@ const Calculator = props => {
                 </div>
                 <div className="calc-row">
                     <DigitButton digitEntered={digitEntered} digit="0" wide />
-                    <button className="calc-button">.</button>
+                    <DigitButton digitEntered={digitEntered} digit="." />
                     <EqualsButton equalsEntered={equalsEntered}/>
                 </div>
             </div>
